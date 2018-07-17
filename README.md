@@ -1,6 +1,6 @@
 # PSR7 ServerRequest Extension
 
-Provides a trait that adds utility functions to a PSR7 `ServerResponse` subclass that make it easier to interact with input. Inspired by the API of [Laravel](https://laravel.com/docs/5.6/requests).
+Provides traits that add utility functions to a PSR7 `ServerResponse` subclass that make it easier to interact with the URI and input. Inspired by the API of [Laravel](https://laravel.com/docs/5.6/requests).
 
 ## Install
 
@@ -8,19 +8,20 @@ Provides a trait that adds utility functions to a PSR7 `ServerResponse` subclass
 
 ## Create a ServerRequest
 
-Create a subclass of a PSR7 compatible `ServerRequest` object (e.g. [Diactoros](https://github.com/zendframework/zend-diactoros)) and add the `Psr7ServerRequestExtension` trait.
+Create a subclass of a PSR7 compatible `ServerRequest` object (e.g. [Diactoros](https://github.com/zendframework/zend-diactoros)) and add the `InteractsWithInput` and `InteractsWithUri` traits.
 
 ```php
 <?php
 
 namespace App;
 
-use Rareloop\Psr7ServerRequestExtension\Psr7ServerRequestExtension;
+use Rareloop\Psr7ServerRequestExtension\InteractsWithInput;
+use Rareloop\Psr7ServerRequestExtension\InteractsWithUri;
 use Zend\Diactoros\ServerRequest;
 
 class MyServerRequest extends ServerRequest
 {
-    use Psr7ServerRequestExtension;
+    use InteractsWithInput, InteractsWithUri;
 }
 ```
 
