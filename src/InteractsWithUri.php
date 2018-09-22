@@ -27,11 +27,9 @@ trait InteractsWithUri
 
     public function fullUrl() : string
     {
-        $uri = $this->getUri();
+        $query = $this->getUri()->getQuery();
 
-        return $this->url() .
-            '?' .
-            $uri->getQuery();
+        return !empty($query) ? $this->url() . '?' . $query : $this->url();
     }
 
     public function method() : string

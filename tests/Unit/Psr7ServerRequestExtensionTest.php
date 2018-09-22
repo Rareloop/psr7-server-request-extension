@@ -32,6 +32,14 @@ class Psr7ServerRequestExtensionTest extends TestCase
     }
 
     /** @test */
+    public function no_trailing_question_mark_is_added_when_no_query_params_are_present()
+    {
+        $request = new ServerRequest([], [], 'https://test.com/test/123', 'GET');
+
+        $this->assertSame('https://test.com/test/123', $request->fullUrl());
+    }
+
+    /** @test */
     public function can_get_method()
     {
         $request = new ServerRequest([], [], '/test/123', 'GET');
