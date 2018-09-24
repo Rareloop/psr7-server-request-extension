@@ -32,13 +32,8 @@ trait InteractsWithUri
         return !empty($query) ? $this->url() . '?' . $query : $this->url();
     }
 
-    public function method() : string
-    {
-        return strtolower($this->getMethod());
-    }
-
     public function isMethod($method) : bool
     {
-        return $method === $this->method();
+        return strtolower($method) === strtolower($this->getMethod());
     }
 }

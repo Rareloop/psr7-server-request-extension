@@ -40,20 +40,14 @@ class Psr7ServerRequestExtensionTest extends TestCase
     }
 
     /** @test */
-    public function can_get_method()
-    {
-        $request = new ServerRequest([], [], '/test/123', 'GET');
-
-        $this->assertSame('get', $request->method());
-    }
-
-    /** @test */
     public function can_check_method()
     {
         $request = new ServerRequest([], [], '/test/123', 'GET');
 
         $this->assertTrue($request->isMethod('get'));
+        $this->assertTrue($request->isMethod('GET'));
         $this->assertFalse($request->isMethod('post'));
+        $this->assertFalse($request->isMethod('POST'));
     }
 
     /** @test */
