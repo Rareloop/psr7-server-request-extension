@@ -2,6 +2,8 @@
 
 namespace Rareloop\Psr7ServerRequestExtension;
 
+use Tightenco\Collect\Support\Arr;
+
 /**
  * Extension to a PSR7 ServerRequest object to make working with Input simpler
  */
@@ -18,7 +20,7 @@ trait InteractsWithInput
             return $input;
         }
 
-        return $input[$key] ?? $default;
+        return Arr::get($input, $key, $default);
     }
 
     public function has($key)
@@ -27,13 +29,7 @@ trait InteractsWithInput
 
         $input = $this->input();
 
-        foreach ($keys as $k) {
-            if (!isset($input[$k])) {
-                return false;
-            }
-        }
-
-        return true;
+        return Arr::has($input, $keys);
     }
 
     public function query($key = null, $default = null)

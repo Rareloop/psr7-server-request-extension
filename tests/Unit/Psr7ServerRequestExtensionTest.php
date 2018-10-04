@@ -71,6 +71,22 @@ class Psr7ServerRequestExtensionTest extends TestCase
     }
 
     /** @test */
+    public function can_get_specific_input_with_key_using_dot_notation()
+    {
+        $request = new ServerRequest([], [], '/test/123', 'GET', 'php://input', [], [], ['foo' => ['key' => 'value']]);
+
+        $this->assertSame('value', $request->input('foo.key'));
+    }
+
+    /** @test */
+    public function can_get_default_when_dot_notation_key_is_not_found_in_input()
+    {
+        $request = new ServerRequest([], [], '/test/123', 'GET', 'php://input', [], [], ['foo' => ['key' => 'value']]);
+
+        $this->assertSame('default', $request->input('foo.nope', 'default'));
+    }
+
+    /** @test */
     public function can_get_default_when_key_is_not_found_in_input()
     {
         $request = new ServerRequest([], [], '/test/123', 'GET');
@@ -85,6 +101,14 @@ class Psr7ServerRequestExtensionTest extends TestCase
 
         $this->assertTrue($request->has('foo'));
         $this->assertFalse($request->has('baz'));
+    }
+
+    /** @test */
+    public function can_check_if_input_has_a_specific_key_using_dot_notation()
+    {
+        $request = new ServerRequest([], [], '/test/123', 'GET', 'php://input', [], [], ['foo' => ['key' => 'value']]);
+
+        $this->assertTrue($request->has('foo.key'));
     }
 
     /** @test */
