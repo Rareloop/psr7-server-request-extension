@@ -7,9 +7,6 @@ namespace Rareloop\Psr7ServerRequestExtension;
  */
 trait InteractsWithInput
 {
-    public abstract function getQueryParams();
-    public abstract function getParsedBody();
-
     public function input($key = null, $default = null)
     {
         $input = $this->post() + $this->query();
