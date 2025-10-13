@@ -33,6 +33,6 @@ trait InteractsWithUri
 
     public function isMethod($method): bool
     {
-        return strtolower((string) $method) === strtolower($this->getMethod());
+        return strtolower($method) === strtolower($this->getMethod());
     }
 }

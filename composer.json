@@ -6,11 +6,10 @@
     },
     "require-dev": {
         "laminas/laminas-diactoros": "^3.6",
-        "phpunit/phpunit": "^12",
+        "phpunit/phpunit": "^10.5",
         "mockery/mockery": "^1.6",
         "brain/monkey": "^2.6.2",
-        "squizlabs/php_codesniffer": "^3.7.2",
-        "rector/rector": "^2.1"
+        "squizlabs/php_codesniffer": "^3.7.2"
     },
     "autoload": {
         "psr-4": {
